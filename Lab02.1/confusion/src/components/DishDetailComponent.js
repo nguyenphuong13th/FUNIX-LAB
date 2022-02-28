@@ -19,7 +19,7 @@ import {
 import dateFormat from "dateformat";
 import { Link } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
-const required = (val) => val && val.length;
+import { Loading } from './LoadingComponent';
 const maxLength = (len) => (val) => !val || val.length <= len;
 const minLength = (len) => (val) => val && val.length >= len;
 function RenderDish({ dish }) {
@@ -92,7 +92,7 @@ class CommentForm extends React.Component {
           <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
           <ModalBody>
             <div className="col-12 col-md-9">
-              <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+              <LocalForm onSubmit={(value) => this.handleSubmit(value)}>
                 <Row className="form-group">
                   <Col>
                     <Label htmlFor="rating">Rating</Label>
@@ -113,11 +113,9 @@ class CommentForm extends React.Component {
                       id="author"
                       name="author"
                       placeholder="Your Name"
-                      className="form-control"
                       validators={{
                         minLength: minLength(3),
                         maxLength: maxLength(15),
-                        required
                       }}
                     />
                     <Errors
@@ -139,7 +137,6 @@ class CommentForm extends React.Component {
                       model=".comment"
                       id="comment"
                       name="comment"
-                      className="form-control"
                     />
                   </Col>
                 </Row>
@@ -153,6 +150,23 @@ class CommentForm extends React.Component {
   }
 }
 const DishDetail = (props) => {
+  if (props.isLoading) {
+    return (
+      <div className="container">
+        <div className="row">
+          <Loading />
+        </div>
+      </div>
+    );
+  } else if (props.errMess) {
+    return (
+      <div className="container">
+        <div className="row">
+          <h4>{props.errMess}</h4>
+        </div>
+      </div>
+    );
+  } else if (props.dish != null)
     return (
       <div className="container">
         <div className="row">
@@ -177,6 +191,7 @@ const DishDetail = (props) => {
         </div>
       </div>
     );
+  else return <div></div>;
 };
 
 export default DishDetail;
