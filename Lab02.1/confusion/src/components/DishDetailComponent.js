@@ -92,7 +92,7 @@ class CommentForm extends React.Component {
           <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
           <ModalBody>
             <div className="col-12 col-md-9">
-              <LocalForm onSubmit={(value) => this.handleSubmit(value)}>
+              <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                 <Row className="form-group">
                   <Col>
                     <Label htmlFor="rating">Rating</Label>
