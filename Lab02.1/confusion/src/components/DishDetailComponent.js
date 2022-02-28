@@ -17,7 +17,6 @@ import {
   Col,
   Label,
 } from "reactstrap";
-import dateFormat from "dateformat";
 import { Link } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { Loading } from './LoadingComponent';

@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Menu from './MenuComponent';
 import DishDetail from './DishDetailComponent';
-import { DISHES } from '../shared/dishes';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
-import { COMMENTS } from '../shared/comments';
-import { PROMOTIONS } from '../shared/promotions';
-import { LEADERS } from '../shared/leaders';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { postComment,addComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
